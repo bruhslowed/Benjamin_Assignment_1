@@ -1,20 +1,20 @@
 [
   {
-    "id": 1,
-    "name": "Jenny",
-    "age": 90,
-    "gender": "F",
-    "contactnum": "999",
-    "medicalhistory": "Obesity",
-    "dateadded": "2025-05-18T07:21:45.184Z"
+    "id": 2,
+    "name": "jonas",
+    "age": 10,
+    "gender": "M",
+    "contactnum": "109",
+    "medicalhistory": "idk",
+    "dateadded": "2025-05-21T09:33:02.514Z"
   },
   {
-    "id": 2,
-    "name": "Ben",
-    "age": 90,
-    "gender": "M",
-    "contactnum": "999",
+    "id": 3,
+    "name": "klara",
+    "age": 8,
+    "gender": "F",
+    "contactnum": "100",
     "medicalhistory": "idk",
-    "dateadded": "2025-05-18T07:22:05.504Z"
+    "dateadded": "2025-05-21T09:33:22.965Z"
   }
 ]

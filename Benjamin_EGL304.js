@@ -121,10 +121,18 @@ module.exports = {
     return importFile();
   },
   DeletePatient(id) {
-    const success = patientstore.splice(id - 1, 1);
+    // const success = patientstore.splice(id - 1, 1);
+    const patientindex = patientstore.findIndex((patient) => patient.id == id);
+    //findindex will find the index of the id given by comparing the input with each of the element's id
     try {
-      if (success) {
-        console.log("Deletion success!");
+      if (patientindex !== -1) {
+        //if patientindex does not equate to -1, meaning that it found an index
+        const success = patientstore.splice(patientindex, 1);
+        // modifies patientstore and returns an array of which elements were deleted into success.
+        success.length > 0
+          ? console.log("Deletion success!")
+          : console.log("error");
+        // if the length of success more than 0, log success else failure idk what to write xD
       } else {
         console.log("Deletion error..");
       }
@@ -132,6 +140,20 @@ module.exports = {
       console.log("Error in deleting... Error log is:", error.message);
     }
   },
+  updatePatient(id, updates = {}) {
+    const { name, age, gender, contactnum, medicalhistory } = updates;
+    if (!id) {
+      throw new console.error("Patient ID is required.");
+    }
+  },
+  FindPatientById(patientid) {
+  const id =
+    typeof patientid === "string" ? parseInt(patientid, 10) : patientid;
+  const patient = viewPatientRecords()
+    .find((patient) => patient.id === id);
+  //viewpatientrecords returns a copy of an array.
+  return patient;
+}
 };
 // const result = module.exports.functionA();
 // console.log("Function A =",result);
