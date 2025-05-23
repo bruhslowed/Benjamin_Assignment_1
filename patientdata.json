@@ -1,20 +1,11 @@
 [
   {
-    "id": 2,
+    "id": 1,
     "name": "jonas",
-    "age": 10,
+    "age": 90,
     "gender": "M",
-    "contactnum": "109",
+    "contactnum": "900",
     "medicalhistory": "idk",
-    "dateadded": "2025-05-21T09:33:02.514Z"
-  },
-  {
-    "id": 3,
-    "name": "klara",
-    "age": 8,
-    "gender": "F",
-    "contactnum": "100",
-    "medicalhistory": "idk",
-    "dateadded": "2025-05-21T09:33:22.965Z"
+    "dateadded": "2025-05-23T08:58:01.138Z"
   }
 ]

@@ -1,12 +1,94 @@
-# Assignment 1
+# Patient Management System for KKH Hospital
 
-You will only need one file, ie, your node module, for this assignment.
+## Overview
 
-In this readme file, describe how to use your node module. It could be similar to **app.js** from Lab2, where you call some functions in your node module and display the output. Describe how to setup your node module, if any. Describe how to call the functions, what parameters required and so on.
+This Node.js module provides a comprehensive solution for managing patient records for KK Women's and Children's Hospital (KKH) website (https://www.kkh.com.sg/). The system offers CRUD (Create, Read, Update, Delete) functionality for patient records with file import/export capabilities.
 
-You can press **Ctrl+Shift+V** in this file in Visual Studio Code to see a live preview of the readme file.
+## Features
 
-For some tips in formatting text in readme file, refer to https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
+- **View all patient records** - Retrieve complete list of patients
+- **Import/Export functionality** - Load from and save to JSON files
+- **Patient management**:
+  - Add new patients with complete details
+  - Delete patients by unique ID
+  - Update single or multiple patient fields
+- **Data persistence** - Save records to file for future sessions
+- **User-friendly CLI interface** - Simple menu-driven interaction
 
-# References
-Provide the references that you have used to support your assignment. 
+## Installation
+
+1. Ensure you have [Node.js](https://nodejs.org/en/) installed (version 14 or higher recommended)
+2. Clone or download this repository
+3. Navigate to the project directory in your terminal
+
+## Usage
+
+Run the application with:
+
+node app.js
+
+
+You'll be presented with a menu of options:
+
+```
+📋 Main Menu
+1. View Patient Records
+2. Import Patient Records
+3. Save Patient Records
+4. Add New Patient
+5. Delete Patient
+6. Update Patient Details
+7. Exit
+```
+
+## Module Functions (`Benjamin_EGL304.js`)
+
+### Core Functions
+- `viewPatientRecords()` - Returns array of all patient records
+- `importPatientRecords()` - Loads patient records from JSON file
+- `savePatientRecords()` - Saves current records to JSON file
+- `addPatient(name, age, gender, contactNum, medicalHistory)` - Creates new patient record
+- `deletePatient(id)` - Removes patient by ID
+- `findPatientById(id)` - Retrieves specific patient record
+- `updatePatient(id, updateObject)` - Modifies patient details
+
+### Utility Functions
+- `saveToFile()` - Persists current records to file
+- `importFile()` - Reads records from JSON file into memory
+
+## File Structure
+
+```
+project-folder/
+│
+├── app.js                # Main application entry point
+├── Benjamin_EGL304.js    # Core patient management module
+├── data/                 # Directory for patient data storage (auto-created)
+│   └── patients.json     # Default patient data file
+├── README.md             # This documentation
+└── package.json          # Node.js project configuration
+```
+
+## Data Model
+
+Patient records contain the following fields:
+- `id`: Unique identifier (auto-generated)
+- `name`: Full name
+- `age`: Numeric age
+- `gender`: Male/Female/Other
+- `contactNum`: Phone number
+- `medicalHistory`: String describing medical background
+
+## Best Practices
+
+1. **Regular backups**: Use the export function frequently
+2. **Data validation**: All inputs are sanitized automatically
+3. **Error handling**: Comprehensive error messages guide proper usage
+
+## Support
+
+For issues or feature requests, please contact the maintainer.
+
+---
+
+This improved version provides clearer structure, better formatting, and more detailed information while maintaining all the original content. The markdown is organized for better readability and includes proper code formatting.

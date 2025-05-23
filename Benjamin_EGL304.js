@@ -85,15 +85,20 @@ function importFile() {
 }
 
 module.exports = {
-  // Explain what function A does
-  functionA() {
-    return 1 + 2;
+
+
+  viewPatientRecords() {
+    return [...patientstore];
+    //why return a copy though?
+    //If the array is empty, log array is empty.else, display data.
   },
-  // Explain what function B does
-  functionB() {
-    console.log("Hello function B");
+ importPatientRecords() {
+    return importFile();
   },
-  AddPatient(name, age, gender, contactnum, medicalhistory = "") {
+  savePatientRecords() {
+    return saveToFile();
+  },
+   AddPatient(name, age, gender, contactnum, medicalhistory = "") {
     //why does medicalhistory have the ="" though. it doesnt make sense like you are trying to assign an empty string to an assigned variable.
     const newpatient = {
       id: patientcounter++,
@@ -107,18 +112,6 @@ module.exports = {
 
     patientstore.push(newpatient);
     return newpatient.id;
-  },
-  viewPatientRecords() {
-    return [...patientstore];
-    //why return a copy though?
-    //If the array is empty, log array is empty.else, display data.
-  },
-
-  savePatientRecords() {
-    return saveToFile();
-  },
-  importPatientRecords() {
-    return importFile();
   },
   DeletePatient(id) {
     // const success = patientstore.splice(id - 1, 1);
@@ -140,22 +133,33 @@ module.exports = {
       console.log("Error in deleting... Error log is:", error.message);
     }
   },
-  updatePatient(id, updates = {}) {
-    const { name, age, gender, contactnum, medicalhistory } = updates;
-    if (!id) {
-      throw new console.error("Patient ID is required.");
-    }
-  },
+
   FindPatientById(patientid) {
+       if (!patientid) {
+      throw new Error("Patient ID is required.");
+      
+    }
   const id =
     typeof patientid === "string" ? parseInt(patientid, 10) : patientid;
-  const patient = viewPatientRecords()
+  const patient = this.viewPatientRecords()
     .find((patient) => patient.id === id);
   //viewpatientrecords returns a copy of an array.
   return patient;
-}
+},
+  updatePatient(id, updates = {}) {
+    
+    if (!id) {
+      throw new Error("Patient ID is required.");
+    }
+    const patient = this.FindPatientById(id);
+    const validfields = [ 'name', 'age', 'gender', 'contactnum', 'medicalhistory' ];
+    Object.keys(updates).forEach(element => {
+      if (validfields.includes(element) &&updates[element]!== "" && updates[element] != null) {
+        // this is checking if validfields contains the object that updates has. so if updates has 'name' validfields will check if it has 'name' in its array.
+        //checks that each object in updates is not null or has an empty string.
+        patient[element] = updates[element];
+      }
+    });
+    return patient;
+  },
 };
-// const result = module.exports.functionA();
-// console.log("Function A =",result);
-
-// module.exports.functionB();
